@@ -1,4 +1,5 @@
 import { pipeline, env } from "https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.7.2";
+import { pinyin } from "https://cdn.jsdelivr.net/npm/pinyin-pro@3.26.0/+esm";
 
 const $ = (s) => document.querySelector(s);
 const $$ = (s) => [...document.querySelectorAll(s)];
@@ -456,21 +457,76 @@ $("#clear-input").onclick = () => {
   $("#source-text").focus();
 };
 let lastSampleTerm = "";
+const samplePreview = document.createElement("div");
+samplePreview.id = "sample-example-preview";
+samplePreview.style.cssText = "display:none;margin-top:10px;padding:12px 14px;border:1px solid var(--border-color,#ddd);border-radius:12px;background:var(--card-bg,rgba(127,127,127,.06));line-height:1.65;";
+$("#sample-input").insertAdjacentElement("afterend", samplePreview);
+
+// 의미에 맞춰 직접 준비한 대표 예문. 목록에 없는 개인 추가 단어는 무리하게 뜻을 추측하지 않고 중립적인 문장으로 보여줍니다.
+const sampleExamples = {
+  "汉堡包": "我昨天吃了汉堡包。",
+  "yyds": "这首歌真的 yyds！",
+  "xswl": "你发的那个视频 xswl！",
+  "绝绝子": "这家店的蛋糕真的绝绝子！",
+  "无语": "我等了一个小时，他还没来，真无语。",
+  "破防了": "看到这段视频，我真的破防了。",
+  "emo": "今天不知道为什么有点 emo。",
+  "哈哈哈": "哈哈哈，你也太搞笑了！",
+  "笑死我了": "你刚才说的话真是笑死我了。",
+  "牛": "你一个晚上就做完了？太牛了！",
+  "绝了": "这个风景也太绝了吧！",
+  "666": "你这操作也太厉害了，666！",
+  "安排": "周末一起吃饭？好，安排！",
+  "躺平": "今天什么也不想做，只想躺平。",
+  "内卷": "大家都在加班，真的太内卷了。",
+  "有一说一": "有一说一，这家店真的很好吃。",
+  "懂的都懂": "这个感觉，懂的都懂。",
+  "dbq": "dbq，我刚才没看到你的消息。",
+  "awsl": "这只小猫也太可爱了，awsl！",
+  "在吗": "在吗？我有件事想问你。",
+  "干嘛呢": "你现在干嘛呢？",
+  "吃了吗": "你吃了吗？要不要一起吃饭？",
+  "我到了": "我到了，你在哪里？",
+  "马上到": "你等我一下，我马上到。",
+  "等我一下": "等我一下，我马上回来。",
+  "有空吗": "你明天有空吗？",
+  "没事": "没事，别放在心上。",
+  "辛苦了": "今天辛苦了，早点休息吧。",
+  "收到": "好的，消息收到！",
+  "好呀": "好呀，那我们周末见！",
+  "真的假的": "真的假的？我怎么不知道！",
+  "不会吧": "不会吧，你真的要去吗？",
+  "怎么啦": "你怎么啦？看起来不太开心。",
+  "别急": "别急，我们慢慢来。",
+  "我也是": "我也是，我特别喜欢这首歌。",
+  "随便": "吃什么都可以，我随便。",
+  "救命": "救命，这也太好笑了！",
+  "离谱": "这个价格也太离谱了吧！",
+  "服了": "我真是服了你了。",
+  "还得是你": "关键时刻还得是你！",
+  "无所谓": "你想去哪儿都行，我无所谓。",
+  "笑死": "你这个表情包真的笑死我了。",
+  "啊这": "啊这……我一时不知道说什么。",
+  "绷不住": "看到他的回答，我真的绷不住了。",
+  "听劝": "这次我听劝，换个发型试试。",
+  "包的": "放心吧，这件事包的！"
+};
+
+function buildSampleExample(word) {
+  return word.example || sampleExamples[word.term] || `我刚才在聊天里看到“${word.term}”了。`;
+}
+
 $("#sample-input").onclick = () => {
-  // 사전의 117개 기본 표현과 사용자가 직접 추가한 표현 중 하나를 무작위로 골라 예문을 만듭니다.
   const words = allWords().filter(item => item.term && item.term !== lastSampleTerm);
   if (!words.length) return;
   const word = words[Math.floor(Math.random() * words.length)];
   lastSampleTerm = word.term;
-  const examples = [
-    `我刚看到“${word.term}”，你知道是什么意思吗？`,
-    `朋友聊天时用了“${word.term}”，我想确认一下意思。`,
-    `“${word.term}”这个表达最近好像很常见。`,
-    `我在聊天里看到“${word.term}”，感觉挺有意思的。`
-  ];
-  const example = examples[Math.floor(Math.random() * examples.length)];
+  const example = buildSampleExample(word);
+  const examplePinyin = pinyin(example, { toneType: "symbol" });
   $("#source-text").value = example;
   $("#char-count").textContent = `${example.length} / 1,200`;
+  samplePreview.style.display = "block";
+  samplePreview.innerHTML = `<div style="font-weight:700;margin-bottom:4px">예시 문장 · ${esc(word.term)}</div><div style="font-size:16px">${esc(example)}</div><div style="font-size:13px;color:var(--muted,#777);margin-top:4px">${esc(examplePinyin)}</div>`;
 };
 $("#translate-button").onclick = translate;
 $("#ask-dictionary").onclick = () => {
