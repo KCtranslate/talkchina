@@ -42,7 +42,7 @@
 
       <nav class="tabs" aria-label="주요 메뉴">
         <button class="tab active" data-tab="translate"><span>✦</span> AI 번역</button>
-        <button class="tab" data-tab="dictionary"><span>📚</span> 신조어 사전</button>
+        <button class="tab" data-tab="dictionary"><span>📚</span> 중국어 사전</button>
         <button class="tab" data-tab="saved"><span>♡</span> 나의 단어장 <b id="saved-count">0</b></button>
       </nav>
 
@@ -64,28 +64,28 @@
       </section>
 
       <section id="dictionary-panel" class="panel">
-        <div class="section-heading"><div><span class="section-kicker">TRENDING EXPRESSIONS</span><h2>중국어 신조어 사전</h2><p>채팅에서 자주 보이는 표현을 검색하고 쉽게 이해해 보세요.</p></div><span class="count-chip">표현 모음</span></div>
+        <div class="section-heading"><div><span class="section-kicker">TRENDING EXPRESSIONS</span><h2>중국어 사전</h2><p>채팅에서 자주 보이는 표현을 검색하고 쉽게 이해해 보세요.</p></div><span class="count-chip">표현 모음</span></div>
         <div class="search-box"><span>⌕</span><input id="dictionary-search" type="search" placeholder="중국어, 병음, 한국어 뜻으로 검색"><button id="dictionary-search-button">검색</button></div>
         <div class="category-row" id="category-row">
-          <button class="category active" data-category="유행어">유행어</button><button class="category" data-category="신조어">신조어</button><button class="category" data-category="일상 용어">일상 용어</button>
+          <button class="category active" data-category="전체">전체</button><button class="category" data-category="신조어">신조어</button><button class="category" data-category="유행어">유행어</button><button class="category" data-category="일상용어">일상용어</button>
         </div>
-        <section class="add-word-card" aria-labelledby="add-word-title">
-          <div class="add-word-heading"><div><strong id="add-word-title">나만의 중국어 표현 추가</strong><p>추가한 표현은 현재 브라우저의 개인 단어장에만 저장돼요.</p></div><span>＋ 내 표현</span></div>
-          <form id="add-word-form" class="add-word-form">
-            <label>중국어 표현<input id="new-term" type="text" maxlength="40" placeholder="예: 出坑" required></label>
-            <label>병음<input id="new-pinyin" type="text" maxlength="80" placeholder="예: chū kēng"></label>
-            <label>한국어 뜻<input id="new-meaning" type="text" maxlength="120" placeholder="예: 덕질을 그만두다" required></label>
-            <label>분류<select id="new-category"><option value="신조어" selected>신조어</option><option value="유행어">유행어</option><option value="일상 용어">일상 용어</option></select></label>
-            <label class="wide-field">사용 상황 및 설명<textarea id="new-note" rows="2" maxlength="240" placeholder="어떤 상황에서 사용하는 표현인지 적어 주세요."></textarea></label>
-            <button class="primary-button add-word-button" type="submit">＋ 개인 단어장에 추가</button>
-          </form>
-        </section>
         <div id="dictionary-grid" class="dictionary-grid"></div>
         <div class="dictionary-ai"><div><strong>찾는 표현이 목록에 없나요?</strong><p>AI에게 표현의 뜻과 실제 사용 맥락을 물어볼 수 있어요.</p></div><button id="ask-dictionary">AI에게 물어보기 <span>→</span></button></div>
       </section>
 
       <section id="saved-panel" class="panel">
         <div class="section-heading"><div><span class="section-kicker">MY VOCABULARY</span><h2>나의 단어장</h2><p>직접 추가하거나 번역 결과에서 저장한 표현을 모아 복습해 보세요.</p></div><span class="count-chip" id="saved-total">0개 저장</span></div>
+        <section class="add-word-card" aria-labelledby="add-word-title">
+          <div class="add-word-heading"><div><strong id="add-word-title">나만의 중국어 표현 추가</strong><p>추가한 표현은 현재 브라우저의 개인 단어장에만 저장돼요.</p></div><span>＋ 내 표현</span></div>
+          <form id="add-word-form" class="add-word-form">
+            <label>중국어 표현<input id="new-term" type="text" maxlength="40" placeholder="예: 出坑" required></label>
+            <label>병음<input id="new-pinyin" type="text" maxlength="80" placeholder="예: chū kēng"></label>
+            <label>한국어 뜻<input id="new-meaning" type="text" maxlength="120" placeholder="예: 덕질을 그만두다" required></label>
+            <label>분류<select id="new-category"><option value="신조어" selected>신조어</option><option value="유행어">유행어</option><option value="일상용어">일상용어</option></select></label>
+            <label class="wide-field">사용 상황 및 설명<textarea id="new-note" rows="2" maxlength="240" placeholder="어떤 상황에서 사용하는 표현인지 적어 주세요."></textarea></label>
+            <button class="primary-button add-word-button" type="submit">＋ 개인 단어장에 추가</button>
+          </form>
+        </section>
         <div id="saved-list" class="saved-list"></div>
       </section>
     </main>
