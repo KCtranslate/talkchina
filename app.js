@@ -7,30 +7,37 @@ const samples = [
   {term:"yyds",pinyin:"yǒng yuǎn de shén",meaning:"영원한 신, 최고",category:"유행어",note:"永远的神의 병음 첫 글자를 딴 표현. 사람이나 작품을 극찬할 때 써요."},
   {term:"xswl",pinyin:"xiào sǐ wǒ le",meaning:"웃겨 죽겠어 ㅋㅋㅋ",category:"유행어",note:"笑死我了의 초성 줄임말. 재미있는 상황이나 농담에 반응할 때 사용해요."},
   {term:"绝绝子",pinyin:"jué jué zǐ",meaning:"완전 대박, 진짜 최고",category:"신조어",note:"아주 좋거나 인상적일 때 쓰는 유행 표현이에요. 문맥에 따라 반어적으로도 쓰여요."},
-  {term:"无语",pinyin:"wú yǔ",meaning:"어이없네, 할 말이 없네",category:"일상 용어",note:"황당하거나 답답해서 말문이 막힐 때 써요."},
+  {term:"无语",pinyin:"wú yǔ",meaning:"어이없네, 할 말이 없네",category:"일상용어",note:"황당하거나 답답해서 말문이 막힐 때 써요."},
   {term:"破防了",pinyin:"pò fáng le",meaning:"마음이 무너졌어, 감정이 흔들렸어",category:"신조어",note:"감동이나 상처를 받아 마음이 크게 움직였을 때 사용해요."},
   {term:"emo",pinyin:"ēi mō",meaning:"우울해, 감성에 잠겼어",category:"신조어",note:"기분이 가라앉거나 센치해진 상태를 가볍게 표현해요."},
-  {term:"哈哈哈",pinyin:"hā hā hā",meaning:"ㅋㅋㅋㅋ, 하하하",category:"일상 용어",note:"웃음을 표현해요."},
-  {term:"笑死我了",pinyin:"xiào sǐ wǒ le",meaning:"아 진짜 웃겨 죽겠네",category:"일상 용어",note:"친구 사이에서 매우 웃긴 상황에 쓰는 과장된 표현이에요."},
-  {term:"牛",pinyin:"niú",meaning:"대단하다, 쩐다",category:"일상 용어",note:"원뜻은 소지만 채팅에서는 능력이나 결과가 훌륭하다는 칭찬이에요."},
-  {term:"绝了",pinyin:"jué le",meaning:"끝내준다, 대박이다",category:"일상 용어",note:"감탄이나 어이없음을 나타낼 수 있어요."},
+  {term:"哈哈哈",pinyin:"hā hā hā",meaning:"ㅋㅋㅋㅋ, 하하하",category:"일상용어",note:"웃음을 표현해요."},
+  {term:"笑死我了",pinyin:"xiào sǐ wǒ le",meaning:"아 진짜 웃겨 죽겠네",category:"일상용어",note:"친구 사이에서 매우 웃긴 상황에 쓰는 과장된 표현이에요."},
+  {term:"牛",pinyin:"niú",meaning:"대단하다, 쩐다",category:"일상용어",note:"원뜻은 소지만 채팅에서는 능력이나 결과가 훌륭하다는 칭찬이에요."},
+  {term:"绝了",pinyin:"jué le",meaning:"끝내준다, 대박이다",category:"일상용어",note:"감탄이나 어이없음을 나타낼 수 있어요."},
   {term:"666",pinyin:"liù liù liù",meaning:"잘한다, 멋지다, 대단해",category:"유행어",note:"六의 발음이 溜(능숙하다)와 비슷해 생긴 인터넷 표현이에요."},
-  {term:"安排",pinyin:"ān pái",meaning:"오케이, 그렇게 하자",category:"일상 용어",note:"원래는 안배·安排하다라는 뜻. 채팅에서는 '콜', '접수'처럼 쓰이기도 해요."},
+  {term:"安排",pinyin:"ān pái",meaning:"오케이, 그렇게 하자",category:"일상용어",note:"원래는 안배·安排하다라는 뜻. 채팅에서는 '콜', '접수'처럼 쓰이기도 해요."},
   {term:"躺平",pinyin:"tǎng píng",meaning:"아무것도 안 하고 쉬기, 현상 유지",category:"신조어",note:"과도한 경쟁과 노력에서 벗어나 최소한만 하겠다는 태도예요."},
   {term:"内卷",pinyin:"nèi juǎn",meaning:"과도한 경쟁, 소모적인 경쟁",category:"신조어",note:"다 같이 지나치게 경쟁하지만 실질적인 이득은 크지 않은 상황을 말해요."},
-  {term:"有一说一",pinyin:"yǒu yī shuō yī",meaning:"솔직히 말해서",category:"일상 용어",note:"자기 의견을 솔직하게 말하겠다는 뜻으로 문장 앞에 자주 붙여요."},
+  {term:"有一说一",pinyin:"yǒu yī shuō yī",meaning:"솔직히 말해서",category:"일상용어",note:"자기 의견을 솔직하게 말하겠다는 뜻으로 문장 앞에 자주 붙여요."},
   {term:"懂的都懂",pinyin:"dǒng de dōu dǒng",meaning:"아는 사람은 다 알지",category:"유행어",note:"굳이 자세히 설명하지 않아도 아는 사람은 안다는 의미예요."},
   {term:"dbq",pinyin:"duì bu qǐ",meaning:"미안해",category:"유행어",note:"对不起의 병음 첫 글자를 딴 줄임말이에요."},
   {term:"awsl",pinyin:"ā wǒ sǐ le",meaning:"귀여워서 죽겠다, 너무 좋아",category:"유행어",note:"啊我死了의 초성. 귀엽거나 설레는 것을 봤을 때 과장해서 표현해요."},
-  {term:"汉堡包",pinyin:"hàn bǎo bāo",meaning:"햄버거",category:"일상 용어",note:"일반적인 음식 이름이에요. 신조어가 아니라 기본 중국어 어휘예요."}
+  {term:"汉堡包",pinyin:"hàn bǎo bāo",meaning:"햄버거",category:"일상용어",note:"일반적인 음식 이름이에요. 신조어가 아니라 기본 중국어 어휘예요."}
 ];
 
-let category = "유행어";
+let category = "전체";
 let saved = [];
 let userWords = [];
 try { saved = JSON.parse(localStorage.getItem("talkchina-saved") || "[]"); } catch {}
 try { userWords = JSON.parse(localStorage.getItem("talkchina-user-words") || "[]"); } catch {}
+// 이전 버전의 분류명과 호환되도록 공백이 포함된 값을 새 분류명으로 정리합니다.
+const normalizeCategory = item => ({ ...item, category: item.category === "일상 용어" ? "일상용어" : (item.category || "신조어") });
+saved = saved.map(normalizeCategory);
+userWords = userWords.map(normalizeCategory);
 const allWords = () => [...userWords, ...samples];
+// 정리된 분류명을 브라우저 저장소에도 반영합니다.
+localStorage.setItem("talkchina-saved", JSON.stringify(saved));
+localStorage.setItem("talkchina-user-words", JSON.stringify(userWords));
 let translator = null;
 let modelPromise = null;
 let lastResult = null;
@@ -103,9 +110,9 @@ function renderSaved() {
     $("#new-meaning").value = item.meaning;
     $("#new-category").value = item.category || "신조어";
     $("#new-note").value = item.note || "";
-    switchTab("dictionary");
+    switchTab("saved");
     $("#new-term").focus();
-    toast("표현을 수정한 뒤 같은 버튼을 눌러 저장해 주세요.");
+    toast("표현을 수정한 뒤 저장 버튼을 눌러 주세요.");
     $("#add-word-form").dataset.editing = item.term;
     $(".add-word-button").textContent = "수정 내용 저장";
   });
@@ -113,7 +120,7 @@ function renderSaved() {
 function renderDictionary(query = "") {
   const q = query.trim().toLowerCase();
   const list = allWords().filter(item =>
-    item.category === category &&
+    (category === "전체" || item.category === category) &&
     (!q || [item.term, item.pinyin, item.meaning, item.note].join(" ").toLowerCase().includes(q))
   );
   $("#dictionary-grid").innerHTML = list.length ? list.map(item => `
@@ -271,7 +278,7 @@ function wireResult(original) {
     term: original,
     meaning: lastResult.translation,
     pinyin: "",
-    category: "일상 용어"
+    category: "일상용어"
   });
 }
 async function translate() {
