@@ -455,9 +455,22 @@ $("#clear-input").onclick = () => {
   $("#char-count").textContent = "0 / 1,200";
   $("#source-text").focus();
 };
+let lastSampleTerm = "";
 $("#sample-input").onclick = () => {
-  $("#source-text").value = "笑死我了，你真的绝绝子！";
-  $("#char-count").textContent = `${$("#source-text").value.length} / 1,200`;
+  // 사전의 117개 기본 표현과 사용자가 직접 추가한 표현 중 하나를 무작위로 골라 예문을 만듭니다.
+  const words = allWords().filter(item => item.term && item.term !== lastSampleTerm);
+  if (!words.length) return;
+  const word = words[Math.floor(Math.random() * words.length)];
+  lastSampleTerm = word.term;
+  const examples = [
+    `我刚看到“${word.term}”，你知道是什么意思吗？`,
+    `朋友聊天时用了“${word.term}”，我想确认一下意思。`,
+    `“${word.term}”这个表达最近好像很常见。`,
+    `我在聊天里看到“${word.term}”，感觉挺有意思的。`
+  ];
+  const example = examples[Math.floor(Math.random() * examples.length)];
+  $("#source-text").value = example;
+  $("#char-count").textContent = `${example.length} / 1,200`;
 };
 $("#translate-button").onclick = translate;
 $("#ask-dictionary").onclick = () => {
